@@ -33,6 +33,7 @@ io.on('connection', function (socket) {
     var updatedKeys = Object.keys(newData);
     updatedKeys.forEach(function(updatedKey) {
       if (subscribedKeys.indexOf(updatedKey) > -1) {
+        console.log('Emitting event for subscribed keys', updatedKey, newData[updatedKey]);
         socket.emit('key-update', { key: updatedKey, value: newData[updatedKey] });
       }
     });
