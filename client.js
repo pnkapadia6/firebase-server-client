@@ -1,8 +1,11 @@
-const getButton = document.getElementById('get-btn');
-const updateButton = document.getElementById('update-btn');
+const getDataButton = document.getElementById('get-btn');
+
+const keyInput = document.getElementById('key-input');
+const valueInput = document.getElementById('value-input');
+const updateDataButton = document.getElementById('update-btn');
 const dataContainer = document.getElementById('data');
 
-getButton.addEventListener('click', function(e) {
+getDataButton.addEventListener('click', function(e) {
   fetch('/data', {
     method: 'GET'
   })
@@ -14,12 +17,15 @@ getButton.addEventListener('click', function(e) {
     });
 });
 
-updateButton.addEventListener('click', function(e) {
-  fetch('/updateData', {
+updateDataButton.addEventListener('click', function(e) {
+  var userKey = keyInput.value;
+  var userValue = valueInput.value || 0;
+
+  userKey && fetch('/updateData', {
     method: 'POST',
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ value: 4 })
+    body: JSON.stringify({ [userKey]: userValue })
   })
 });
