@@ -7,11 +7,19 @@
     <body>
         <h1>Firebase</h1>
         <div id="data"></div>
-        <button id="get-btn">Get</button>
+        <div id="get-btn">
+            <button>Get</button>
+        </div>
 
         <input type="text" placeholder="key" id="key-input"/>
         <input type="text" placeholder="value" id="value-input"/>
         <button id="update-btn">Update</button>
+
+        <div id="subscribe-btn">
+            <button>Subscribe to <b>Hello</b> key </button>
+        </div>
+        <div id="updates"></div>
     </body>
+    <script src="/socket.io/socket.io.js"></script>
     <script src="./client.js"></script>
 </html>
